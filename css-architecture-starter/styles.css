@@ -189,21 +189,89 @@
 }
 
 @layer utilities {
+  /* Limit paragraph line length */
+  .u-measure {
+    max-width: 65ch;
+  }
+
+  /* Add consistent spacing between direct children */
+  .u-stack > * + * {
+    margin-block-start: var(--space-medium);
+  }
+
+  /* Emphasize short introductory labels */
+  .u-uppercase {
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+  }
+
   .visually-hidden {
     position: absolute;
     inline-size: 1px;
     block-size: 1px;
     overflow: hidden;
-    clip: rect(0 0 0 0);
+    clip: rect(0, 0, 0, 0);
     white-space: nowrap;
     clip-path: inset(50%);
   }
 }
 
 @layer overrides {
-  /* Keep this layer small. Use it only for intentional exceptions. */
-}
+  :focus-visible {
+    outline: var(--focus-width) solid var(--focus-color);
+    outline-offset: var(--focus-offset);
+  }
 
-@media print {
-  /* Add print improvements here. */
+  .nav-list a[aria-current="page"] {
+    background: var(--color-brand);
+    color: var(--color-surface);
+    font-weight: bold;
+    text-decoration: underline;
+  }
+
+  @media print {
+    body {
+      background: white;
+      color: black;
+      font-size: 11pt;
+    }
+
+    .site-header nav,
+    .interest-form,
+    .hero .button {
+      display: none;
+    }
+
+    .site-header,
+    main,
+    .site-footer {
+      width: 100%;
+    }
+
+    .hero,
+    .section {
+      padding-block: 0.75rem;
+    }
+
+    .card-grid {
+      display: block;
+    }
+
+    .card,
+    .callout {
+      break-inside: avoid;
+      margin-block-end: 1rem;
+      background: white;
+      border: 1px solid black;
+    }
+
+    a {
+      color: black;
+    }
+
+    a[href^="https://"]::after {
+      content: " (" attr(href) ")";
+      overflow-wrap: anywhere;
+    }
+  }
 }

@@ -1,6 +1,7 @@
 @layer reset, base, layout, components, utilities, overrides;
 
 @layer reset {
+
   *,
   *::before,
   *::after {
@@ -14,7 +15,33 @@
 
 @layer base {
   :root {
-    /* Add design tokens here. */
+    /* Color */
+    --color-background: #fffaf3;
+    --color-surface: #ffffff;
+    --color-text: #242b32;
+    --color-brand: #843d25;
+    --color-border: #a79d91;
+
+    /* Type */
+    --font-body: Arial, Helvetica, sans-serif;
+    --font-heading: Georgia, "Times New Roman", serif;
+    --text-body: 1rem;
+    --text-heading: clamp(2rem, 5vw, 3.5rem);
+
+    /* Spacing */
+    --space-small: 0.5rem;
+    --space-medium: 1rem;
+    --space-large: 1.5rem;
+    --space-section: 3rem;
+
+    /* Shape */
+    --radius-small: 0.35rem;
+    --radius-card: 0.75rem;
+
+    /* Focus */
+    --focus-color: #005fcc;
+    --focus-width: 3px;
+    --focus-offset: 3px;
   }
 
   body {

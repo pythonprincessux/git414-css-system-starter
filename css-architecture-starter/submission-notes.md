@@ -1,34 +1,42 @@
 Kiara L. McRae · GIT 414
 
-## Layer order
+## Layer Order
 
-`reset, base, layout, components, utilities, overrides`
+My layer order is:
 
-Reset normalizes defaults; base defines tokens and element styles; layout handles page composition; components owns reusable patterns; utilities provides small adjustments; this overrides contains a local token exception and print exceptions. Print rules are nested in the final layer intentionally.
+reset, base, layout, components, utilities, overrides
 
-## Three token decisions
+The reset layer creates the box sizing and removes the default body margin. Base defines custom properties and element styles. Layout is controlling the page width, spacing, and the responsive card grid. Components styles reusable navigation links, buttons, cards, and form controls. Utilities gives us small adjustments. Overrides contains focus, current-page, and print styles.
 
-1. Color: `--color-brand` gives the same dark terracotta for buttons, links, and current navigation. Changing the token updates all of these uses together.
-2. Type and spacing: system fonts do not use a font download; `--text-title` uses a fluid clamp, and a shared spacing scale helps control the gaps and padding.
-3. Shape and focus: shared corner radius' keep the cards and controls consistent; a blue 3px outline with 3px offset gives us a reusable keyboard-focus treatment.
+## Three Token Decisions
 
-## Easier maintenance
+1. Color: --color-brand provides a consistent terracotta color for links, buttons, and the current navigation item. Updating this token changes all of those uses together at the same time.
 
-The three cards use one `.card` rule, and the link and submit button share `.button`. Form inputs and the select share one control rule. Utilities `.u-stack`, `.u-measure`, and `.u-muted` are used in the HTML; `.visually-hidden` is available for accessible supporting text. A contextual token override gives the hero more spacing without making the stacking rule repeat over and over or duplicate. 
+2. Type: --font-body and --font-heading separate body and heading typography. --text-heading uses clamp() to let the main heading resize within minimum and maximum limits.
 
-## States and print
+3. Shape and focus: Shared radius tokens keep cards and controls consistent. Focus tokens define a blue 3px outline with a 3px offset for keyboard focus.
 
-`:focus-visible` marks keyboard focus, the skip link appears on focus, and `[aria-current="page"]` marks Home with an underline, weight, and background. Print rules remove navigation and the demonstration form, simplify colors, stack cards, and avoids splitting cards where possible.
+## Easier Maintenance
 
-## Scope and verification
+All three session cards share the .card class, and the registration link and submit button share .button. This lets me update repeated components in one place.
 
-The starter content and placeholder links are retained. The form is a demonstration and does not collect or save submissions or personal information.
+The HTML also uses three utilities: .u-measure limits text width, .u-stack adds spacing between direct children, and .u-uppercase formats introductory labels.
 
-I inspected the files for required layers, tokens, component classes, utility usage, focus/current states, and print rules. I tested for overflow, viewport, and navigation. I tested all CSS myself.
+## State and Print Styles
+
+:focus-visible provides a visible keyboard-focus indicator. The [aria-current="page"] selector identifies Home through an underline, bold text, and a contrasting background.
+
+Print styles hide navigation and form controls, stack the cards, simplify colors, reduce section spacing, and discourage page breaks inside cards and callouts.
+
+## Scope
+
+This remains the supplied practice page. Placeholder links and the demonstration form are kept. 
+
+
 
 ## AI disclosure
 
-For this week's assignment, I used ChatGPT. The AI assistance included suggesting token names or identify missing states. After trying to fix myself a few times, I used the AI to troubleshoot the problems in the output terminal as well with my styles.css. Most issues consisted of a missing bracket and invalid values for width properties. When I ran the issues through the checkers and kept getting errors, I asked ChatGPT to identify the errors in the code I typed.
+For this week's assignment, I used ChatGPT. The AI assistance included explain the starter structure, suggesting token names and identifying missing states. After trying to fix myself a few times, I used the AI to troubleshoot the problems in the output terminal as well with my styles.css. Most issues consisted of a missing bracket and invalid values for width properties. When I ran the issues through the checkers and kept getting errors, I asked ChatGPT to identify the errors in the code I typed.
 
 ## Documentation consulted
 

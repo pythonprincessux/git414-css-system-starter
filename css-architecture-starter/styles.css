@@ -1,6 +1,7 @@
 @layer reset, base, layout, components, utilities, overrides;
 
 @layer reset {
+
   *,
   *::before,
   *::after {
@@ -44,8 +45,26 @@
   }
 
   body {
-    font-family: Arial, Helvetica, sans-serif;
-    line-height: 1.5;
+    font-family: var(--font-body);
+    font-size: var(--text-body);
+    line-height: 1.6;
+    color: var(--color-text);
+    background: var(--color-background);
+  }
+
+  h1,
+  h2,
+  h3 {
+    font-family: var(--font-heading);
+    line-height: 1.2;
+  }
+
+  h1 {
+    font-size: var(--text-heading);
+  }
+
+  a {
+    color: var(--color-brand);
   }
 
   img,
@@ -189,13 +208,14 @@
 }
 
 @layer utilities {
+
   /* Limit paragraph line length */
   .u-measure {
     max-width: 65ch;
   }
 
   /* Add consistent spacing between direct children */
-  .u-stack > * + * {
+  .u-stack>*+* {
     margin-block-start: var(--space-medium);
   }
 
